@@ -1,0 +1,14 @@
+# -----------------------------------------------------------------------------
+# File      : config/rman_configuration.rman
+# Purpose   : Baseline RMAN retention and control-file autobackup settings.
+# Usage     : rman target / @config/rman_configuration.rman
+# Requires  : RMAN privileges for the target database.
+#
+# Review the recovery window against your recovery requirements before use.
+# Copyright (c) 2026 Mohamed Dawood. MIT License; see LICENSE.
+# -----------------------------------------------------------------------------
+
+CONFIGURE RETENTION POLICY TO RECOVERY WINDOW OF 30 DAYS;
+CONFIGURE CONTROLFILE AUTOBACKUP ON;
+
+SHOW ALL;

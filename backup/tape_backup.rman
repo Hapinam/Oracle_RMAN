@@ -1,0 +1,31 @@
+# -----------------------------------------------------------------------------
+# File      : backup/tape_backup.rman
+# Purpose   : Generic SBT/tape RMAN backup template.
+# Usage     : Configure the media-management library, then run with RMAN.
+# Requires  : A working Oracle SBT media-management integration.
+#
+# WARNING   : Media-manager parameters are intentionally not embedded here.
+# Copyright (c) 2026 Mohamed Dawood. MIT License; see LICENSE.
+# -----------------------------------------------------------------------------
+
+RUN {
+  ALLOCATE CHANNEL t1 DEVICE TYPE SBT;
+  ALLOCATE CHANNEL t2 DEVICE TYPE SBT;
+
+  BACKUP AS COMPRESSED BACKUPSET DATABASE
+    FORMAT 'database_%d_%T_%U';
+
+  SQL 'ALTER SYSTEM ARCHIVE LOG CURRENT';
+
+  BACKUP AS COMPRESSED BACKUPSET ARCHIVELOG ALL
+    FORMAT 'archivelog_%d_%T_%U';
+
+  BACKUP CURRENT CONTROLFILE
+    FORMAT 'controlfile_%d_%T_%U';
+
+  BACKUP SPFILE
+    FORMAT 'spfile_%d_%T_%U';
+
+  RELEASE CHANNEL t1;
+  RELEASE CHANNEL t2;
+}

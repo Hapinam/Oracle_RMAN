@@ -1,0 +1,17 @@
+# -----------------------------------------------------------------------------
+# File      : catalog/catalog_setup.rman
+# Purpose   : Create an RMAN recovery catalog and register a target database.
+# Usage     : Connect to the catalog and target without embedding credentials,
+#             then execute this command file.
+# Requires  : An existing catalog owner with RECOVERY_CATALOG_OWNER privilege.
+#
+# Copyright (c) 2026 Mohamed Dawood. MIT License; see LICENSE.
+# -----------------------------------------------------------------------------
+
+# Example connection pattern:
+#   rman TARGET / CATALOG <catalog_user>@<catalog_service>
+# RMAN prompts for credentials when required; do not commit passwords.
+
+CREATE CATALOG;
+REGISTER DATABASE;
+REPORT SCHEMA;

@@ -1,0 +1,5 @@
+* text=auto eol=lf
+*.sql text eol=lf
+*.rman text eol=lf
+*.sh text eol=lf
+*.md text eol=lf

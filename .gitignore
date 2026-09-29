@@ -1,0 +1,24 @@
+# Oracle/RMAN generated output
+*.log
+*.lst
+*.trc
+*.aud
+*.dmp
+
+# Local environment and credentials
+.env
+*.env
+*.pwd
+*.ora.local
+wallet/
+tnsnames.ora
+listener.ora
+sqlnet.ora
+orapw*
+
+# Editor and OS files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~
